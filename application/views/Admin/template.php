@@ -15,6 +15,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/template/css/plugins/animate.min.css"/>
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/template/css/plugins/datatables.bootstrap.min.css"/>
 
+
 	<link href="<?php echo base_url() ?>assets/template/css/style.css" rel="stylesheet">
 
 	<!-- notification   -->
@@ -140,7 +141,15 @@
 			  position: "left"
 		  });
 	   <?php
-   			}
+   			}elseif($this->session->flashdata('messageFailed')){
+		?>
+			notif({
+				type: "error",
+				msg: "<?php echo $this->session->flashdata('messageFailed') ?>",
+				position: "left"
+			});
+		<?php
+		   }
 		?>
 
 

@@ -61,7 +61,7 @@ class Grade extends CI_Controller {
         $data['grade_created_by'] = "hrd";
         $data['grade_update'] = date("Y-m-d H:i:s");
 
-        $update = $this->grade->update_grade($data);
+        $update = $this->grade->update_grade($data['grade_id'], $data);
 
         if($update){
             $this->session->set_flashdata('messageSuccess', "Data has been updated");
@@ -81,7 +81,7 @@ class Grade extends CI_Controller {
         $save = $this->grade->save_grade($data);
 
         if($save){
-            $this->session->set_flashdata('messageSuccess', "Data has been deleted");
+            $this->session->set_flashdata('messageSuccess', "Data has been saved");
         }else{
             $this->session->set_flashdata('messageFailed', "failed to save this data");
         }
