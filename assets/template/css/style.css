@@ -5811,7 +5811,7 @@ ul li a:focus {
 .form-animate-radio .radio {
   display: inline-block;
   padding-right: 20px;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 100;
   padding-bottom: 10px;
   cursor: pointer;
@@ -5913,8 +5913,8 @@ ul li a:focus {
 }
 
 .form-animate-radio .radio .outer {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   display: block;
   float: left;
   border: 2px solid #ddd;
@@ -5938,8 +5938,8 @@ ul li a:focus {
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);

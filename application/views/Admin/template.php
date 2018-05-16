@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/template/css/plugins/animate.min.css"/>
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/template/css/plugins/datatables.bootstrap.min.css"/>
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap-datetimepicker.min.css"/>
 
 
 	<link href="<?php echo base_url() ?>assets/template/css/style.css" rel="stylesheet">
@@ -25,7 +26,6 @@
 	<link rel="shortcut icon" href="<?php echo base_url() ?>assets/template/img/logomi.png">
 
   </head>
-
  <body id="mimin" class="dashboard">
       <!-- start: Header -->
         <nav class="navbar navbar-default header navbar-fixed-top">
@@ -75,7 +75,7 @@
                       <p >Sat,October 1st 2029</p>
                     </li>
                     <li class="active ripple">
-                          <li><a href="dashboard-v1.html"><span class="fa-home fa"></span> Dashboard</a></li>
+                          <li><a href="<?php echo base_url('dashboard')?>"><span class="fa-home fa"></span> Dashboard</a></li>
                     </li>
 
                     <li class="ripple">
@@ -124,6 +124,7 @@
 	<script src="<?php echo base_url()?>assets/template/js/plugins/datatables.bootstrap.min.js"></script>
 
 	<script src="<?php echo base_url()?>assets/js/notifIt.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 
     <!-- custom -->
      <script src="<?php echo base_url() ?>assets/template/js/main.js"></script>
@@ -152,7 +153,15 @@
 		   }
 		?>
 
-
+		$('.classdate').datetimepicker({
+	        weekStart: 1,
+	        todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			minView: 2,
+			forceParse: 0
+	    });
 	 </script>
   </body>
 </html>

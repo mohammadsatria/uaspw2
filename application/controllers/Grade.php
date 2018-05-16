@@ -61,15 +61,26 @@ class Grade extends CI_Controller {
         $data['grade_created_by'] = "hrd";
         $data['grade_update'] = date("Y-m-d H:i:s");
 
-        $update = $this->grade->update_grade($data['grade_id'], $data);
+        $condition = array(
+                "grade_id !=" => $data['grade_id'],
+                "grade_desc" => $data['grade_desc']
+        );
+        $check_duplicate = $this->grade->get_grade($condition);
 
-        if($update){
-            $this->session->set_flashdata('messageSuccess', "Data has been updated");
+        if($check_duplicate){
+            $this->session->set_flashdata('messageFailed', "Grade already exist");
+            redirect(base_url('grade/edit/'.$data['grade_id']));
         }else{
-            $this->session->set_flashdata('messageFailed', "failed to update this data");
+            $update = $this->grade->update_grade($data['grade_id'], $data);
 
+            if($update){
+                $this->session->set_flashdata('messageSuccess', "Data has been updated");
+            }else{
+                $this->session->set_flashdata('messageFailed', "failed to update this data");
+
+            }
+            redirect(base_url('grade'));
         }
-        redirect(base_url('grade'));
     }
 
     public function save()
@@ -78,14 +89,27 @@ class Grade extends CI_Controller {
         $data['grade_created_by'] = "hrd";
         $data['grade_update'] = date("Y-m-d H:i:s");
 
-        $save = $this->grade->save_grade($data);
+        $condition = array(
+                "grade_desc" => $data['grade_desc']
+        );
+        $check_duplicate = $this->grade->get_grade($condition);
 
-        if($save){
-            $this->session->set_flashdata('messageSuccess', "Data has been saved");
+        if($check_duplicate){
+            $this->session->set_flashdata('messageFailed', "Grade already exist");
+            redirect(base_url('grade/add'));
+
         }else{
-            $this->session->set_flashdata('messageFailed', "failed to save this data");
+            $save = $this->grade->save_grade($data);
+
+            if($save){
+                $this->session->set_flashdata('messageSuccess', "Data has been saved");
+            }else{
+                $this->session->set_flashdata('messageFailed', "failed to save this data");
+            }
+            redirect(base_url('grade'));
         }
-        redirect(base_url('grade'));
 
     }
 }
+
+// created by mohammad satria 1611520022

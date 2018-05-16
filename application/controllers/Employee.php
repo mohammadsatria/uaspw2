@@ -51,6 +51,7 @@ class Employee extends CI_Controller {
                 'emp_id' => $id
             );
             $data['employee'] = $this->employee->get_employee($condition)->row();
+            $data['grade'] = $this->grade->get_grade();
             $data['modul_name'] = "Employee";
             $data['content'] = "Employee/edit_view";
      		$this->load->view('Admin/template', $data);
@@ -60,8 +61,8 @@ class Employee extends CI_Controller {
     public function update()
     {
         $data = $this->input->post();
-        $data['employee_created_by'] = "hrd";
-        $data['employee_update'] = date("Y-m-d H:i:s");
+        $data['emp_created_by'] = "hrd";
+        $data['emp_update'] = date("Y-m-d H:i:s");
 
         $update = $this->employee->update_employee($data['emp_id'], $data);
 
@@ -77,15 +78,17 @@ class Employee extends CI_Controller {
     public function save()
     {
         $data = $this->input->post();
-        $data['employee_created_by'] = "hrd";
-        $data['employee_update'] = date("Y-m-d H:i:s");
+        $data['emp_created_by'] = "hrd";
+        $data['emp_update'] = date("Y-m-d H:i:s");
 
         $condition = array(
                 "emp_id" => $data['emp_id']
         );
         $check_duplicate = $this->employee->get_employee($condition);
-        if($check_duplicate->num_rows() > 0){
+        if($check_duplicate){
             $this->session->set_flashdata('messageFailed', "Employee ID already exist");
+            redirect(base_url('employee/add'));
+
         }else{
             $save = $this->employee->save_employee($data);
 
@@ -111,3 +114,5 @@ class Employee extends CI_Controller {
         echo $data;
     }
 }
+
+// created by mohammad satria 1611520022
