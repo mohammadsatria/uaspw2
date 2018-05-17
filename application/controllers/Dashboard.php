@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller{
     {
         $data['content'] = "Admin/dashboard_view";
         $data['modul_name'] = "Dashboard";
+        $data['title'] = ":: Dashboard";
         $data['employee'] = $this->employee->get_employee()->num_rows();
         $data['grade'] = $this->grade->get_grade()->num_rows();
 

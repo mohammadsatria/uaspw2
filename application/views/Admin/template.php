@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="keyword" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Miminium</title>
+    <title>HR System <?php echo $title ?></title>
 
     <!-- start: Css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/template/css/bootstrap.min.css">

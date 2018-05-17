@@ -12,6 +12,7 @@ class Employee extends CI_Controller {
 	{
         $data['employee'] = $this->employee->get_employee();
         $data['modul_name'] = "Employee";
+        $data['title'] = ":: Employee";
         $data['content'] = "Employee/show_view";
  		$this->load->view('Admin/template', $data);
 	}
@@ -20,6 +21,7 @@ class Employee extends CI_Controller {
     {
         $data['grade'] = $this->grade->get_grade();
         $data['modul_name'] = "Employee";
+        $data['title'] = ":: Employee";
         $data['content'] = "Employee/add_view";
         $this->load->view('Admin/template', $data);
 
@@ -53,6 +55,7 @@ class Employee extends CI_Controller {
             $data['employee'] = $this->employee->get_employee($condition)->row();
             $data['grade'] = $this->grade->get_grade();
             $data['modul_name'] = "Employee";
+            $data['title'] = ":: Employee";
             $data['content'] = "Employee/edit_view";
      		$this->load->view('Admin/template', $data);
         }

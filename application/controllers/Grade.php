@@ -11,6 +11,7 @@ class Grade extends CI_Controller {
 	{
         $data['grade'] = $this->grade->get_grade();
         $data['modul_name'] = "Grade";
+        $data['title'] = ":: Grade";
         $data['content'] = "Grade/show_view";
  		$this->load->view('Admin/template', $data);
 	}
@@ -18,6 +19,7 @@ class Grade extends CI_Controller {
     public function add()
     {
         $data['modul_name'] = "Grade";
+        $data['title'] = ":: Grade";
         $data['content'] = "Grade/add_view";
         $this->load->view('Admin/template', $data);
 
@@ -50,6 +52,7 @@ class Grade extends CI_Controller {
             );
             $data['grade'] = $this->grade->get_grade($condition)->row();
             $data['modul_name'] = "Grade";
+            $data['title'] = ":: Grade";
             $data['content'] = "Grade/edit_view";
      		$this->load->view('Admin/template', $data);
         }
