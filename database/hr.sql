@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2018 at 03:39 AM
+-- Generation Time: May 18, 2018 at 03:45 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -47,15 +47,14 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `emp_name`, `emp_address`, `emp_birthdate`, `emp_birthplace`, `emp_email`, `emp_created_by`, `emp_update`, `emp_gender`, `emp_religion`, `emp_grade`) VALUES
-('AX0001', 'Mohammad Satria', 'Perumahan Griya Benda Asri ', '1994-02-01', 'Jakarta', 'mohammad.satria3498@gmail.com', 'hrd', '2018-05-07 00:00:00', '1', 'I', 1),
-('AX0003', 'Feeder Aginta', 'Pamulang', '1992-05-07', 'Medan, Sumatra Utara', 'feeder.aginta@gmail.com', 'hrd', '2018-05-07 00:00:00', '0', 'I', 1),
-('AX0004', 'Dewa Danubrata', 'Cijantung, Jakarta Timur', '1992-05-03', 'Bekasi', 'dewa.awed@gmail.com', 'hrd', '2018-05-15 00:00:00', '0', 'H', 1),
-('AX0005', 'Aburizal Rosadi', 'Jogjakarta', '1996-05-03', 'Jogjakarta', 'abu.rizal@gmail.com', 'hrd', '2018-05-15 00:00:00', '0', 'I', 1),
-('AX0006', 'Muhammad Otong', 'Depok', '1976-03-21', 'Jakarta', 'otong.ajah@gmail.com', 'hrd', '2018-05-08 00:00:00', '0', 'I', 1),
-('AX0007', 'Ria Hanifah', 'Depok', '1995-03-20', 'Solo', 'ria.hani@gmail.com', 'hrd', '2018-05-16 00:00:00', '1', 'P', 1),
-('AX0008', 'Gretha Lasut', 'Bekasi', '1974-05-17', 'NTB', 'gretha.lasut@gmail.com', 'hrd', '2018-05-24 00:00:00', '1', 'P', 1),
-('AX0009', 'Roni Erjanto', 'Cibinong', '1988-07-23', 'Bogor', 'roni.erjanto@gmail.com', 'hrd', '2018-05-24 00:00:00', '0', 'P', 1),
-('AX010', 'Eggi Gunawan', 'Depok', '1994-02-20', 'Jakarta', 'eggi.gunawan@axiasolusi.com', 'hrd', '2018-05-22 00:00:00', '0', 'I', 1);
+('AX0001', 'Mohammad Satria', 'Perumahan Griya Benda Asri ', '1994-02-01', 'Jakarta', 'mohammad.satria3498@gmail.com', 'hrd', '2018-05-07 00:00:00', '1', 'I', 2),
+('AX0003', 'Feeder Aginta', 'Pamulang', '1992-05-07', 'Medan, Sumatra Utara', 'feeder.aginta@gmail.com', 'hrd', '2018-05-07 00:00:00', '0', 'I', 2),
+('AX0004', 'Dewa Danubrata', 'Cijantung, Jakarta Timur', '1992-05-03', 'Bekasi', 'dewa.awed@gmail.com', 'hrd', '2018-05-15 00:00:00', '0', 'H', 2),
+('AX0005', 'Aburizal Rosadi', 'Jogjakarta', '1996-05-03', 'Jogjakarta', 'abu.rizal@gmail.com', 'hrd', '2018-05-15 00:00:00', '0', 'I', 2),
+('AX0006', 'Muhammad Otong', 'Depok', '1976-03-21', 'Jakarta', 'otong.ajah@gmail.com', 'hrd', '2018-05-08 00:00:00', '0', 'I', 2),
+('AX0007', 'Ria Hanifah', 'Depok', '1995-03-20', 'Solo', 'ria.hani@gmail.com', 'hrd', '2018-05-16 00:00:00', '1', 'P', 2),
+('AX0008', 'Gretha Lasut', 'Bekasi', '1974-05-17', 'NTB', 'gretha.lasut@gmail.com', 'hrd', '2018-05-24 00:00:00', '1', 'P', 2),
+('AX0009', 'Roni Erjanto', 'Cibinong', '1988-07-23', 'Bogor', 'roni.erjanto@gmail.com', 'hrd', '2018-05-24 00:00:00', '0', 'P', 2);
 
 -- --------------------------------------------------------
 
@@ -76,7 +75,6 @@ CREATE TABLE `grade` (
 --
 
 INSERT INTO `grade` (`grade_id`, `grade_desc`, `grade_order`, `grade_created_by`, `grade_update`) VALUES
-(1, 'Director', 1, 'hrd', '2018-05-14 23:18:32'),
 (2, 'General Manager', 2, 'hrd', '2018-05-14 23:18:32'),
 (3, 'Manager', 4, 'hrd', '2018-05-14 23:18:32'),
 (4, 'Senior Assistant Manager', 5, 'hrd', '2018-05-14 23:18:32'),
@@ -105,7 +103,8 @@ CREATE TABLE `users` (
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
-  ADD PRIMARY KEY (`emp_id`);
+  ADD PRIMARY KEY (`emp_id`),
+  ADD KEY `emp_grade` (`emp_grade`);
 
 --
 -- Indexes for table `grade`
@@ -127,12 +126,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `employee`
+--
+ALTER TABLE `employee`
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`emp_grade`) REFERENCES `grade` (`grade_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
